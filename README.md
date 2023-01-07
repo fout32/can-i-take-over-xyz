@@ -2,40 +2,40 @@
 
 ## Disclaimer :warning:
 
-**The authors of this document take no responsibility for correctness. This project is merely here to help guide security researchers towards determining whether something is vulnerable or not, but does not guarantee accuracy. This project heavily relies on contributions from the public; therefore, proving that something is vulnerable is the security researcher and bug bounty program's sole discretion. On top of that, it is worth noting that some bug bounty programs may accept dangling DNS record reports without requiring proof of compromise.**
+**Авторы этого документа не несут никакой ответственности за правильность. Этот проект предназначен лишь для того, чтобы помочь исследователям безопасности определить, является ли что-то уязвимым или нет, но не гарантирует точности. Этот проект в значительной степени зависит от вклада общественности; поэтому доказательство того, что что-то уязвимо, является исключительным правом исследователя безопасности и программы вознаграждения за ошибки. Кроме того, стоит отметить, что некоторые программы поиска ошибок могут принимать отчеты о зависших записях DNS, не требуя доказательств компрометации.**
 
-## What is a subdomain takeover?
+## Что такое захват поддомена?
 
-> Subdomain takeover vulnerabilities occur when a subdomain (subdomain.example.com) is pointing to a service (e.g. GitHub pages, Heroku, etc.) that has been removed or deleted. This allows an attacker to set up a page on the service that was being used and point their page to that subdomain. For example, if subdomain.example.com was pointing to a GitHub page and the user decided to delete their GitHub page, an attacker can now create a GitHub page, add a CNAME file containing subdomain.example.com, and claim subdomain.example.com.
+> Уязвимости при захвате поддомена возникают, когда поддомен (subdomain.example.com ) указывает на сервис (например, GitHub pages, Heroku и т.д.), который был удален или удалили. Это позволяет злоумышленнику настроить страницу в используемой службе и указать свою страницу на этот поддомен. Например, если subdomain.example.com указывал на страницу GitHub, и пользователь решил удалить свою страницу GitHub, теперь злоумышленник может создать страницу GitHub, добавить файл CNAME, содержащий subdomain.example.com , и заявлять subdomain.example.com .
 
-You can read up more about subdomain takeovers here:
+Подробнее о захвате поддоменов вы можете прочитать здесь:
 
 - <https://labs.detectify.com/2014/10/21/hostile-subdomain-takeover-using-herokugithubdesk-more/>
 - <https://www.hackerone.com/blog/Guide-Subdomain-Takeovers>
 - <https://0xpatrik.com/subdomain-takeover-ns/>
 
-## Safely demonstrating a subdomain takeover
+## Безопасная демонстрация захвата поддомена
 
-Based on personal experience, claiming the subdomain discreetly and serving a harmless file on a hidden page is usually enough to demonstrate the security vulnerability. Do not serve content on the index page. A good proof of concept could consist of an HTML comment served via a random path:
+Основываясь на личном опыте, незаметного обращения к поддомену и предоставления безопасного файла на скрытой странице обычно достаточно, чтобы продемонстрировать уязвимость в системе безопасности. Не размещайте контент на индексной странице. Хорошим доказательством концепции может служить HTML-комментарий, отправленный по случайному пути:
 
 ```
 $ cat aelfjj1or81uegj9ea8z31zro.html
 <!-- PoC by username -->
 ```
 
-Please be advised that this depends on what bug bounty program you are targeting. When in doubt, please refer to the bug bounty program's security policy and/or request clarifications from the team behind the program.
+Пожалуйста, имейте в виду, что это зависит от того, на какую программу вознаграждения за ошибки вы нацелены. Если вы сомневаетесь, пожалуйста, ознакомьтесь с политикой безопасности программы вознаграждения за ошибки и / или запросите разъяснения у команды, стоящей за программой.
 
-## How to use this project
+## Как использовать этот проект
 
-I recommend searching for the name of the service you are targeting in the issues tab. That way you can see the on-going discussion and more detailed steps on how to claim the subdomain you are after.
+Я рекомендую поискать название службы, на которую вы ориентируетесь, на вкладке "Проблемы". Таким образом, вы сможете увидеть текущее обсуждение и более подробные шаги о том, как заявить права на нужный вам поддомен.
 
-## How to contribute
+## Как внести свой вклад
 
-You can submit new services here: https://github.com/EdOverflow/can-i-take-over-xyz/issues/new?template=new-entry.md.
+Вы можете представить новые услуги здесь: https://github.com/EdOverflow/can-i-take-over-xyz/issues/new?template=new-entry.md.
 
-A list of services that can be checked (although check for duplicates against this list first) can be found here: https://github.com/EdOverflow/can-i-take-over-xyz/issues/26.
+Список служб, которые можно проверить (хотя сначала проверьте наличие дубликатов в этом списке), можно найти здесь: https://github.com/EdOverflow/can-i-take-over-xyz/issues/26.
 
-# All entries
+# Все записи
 
 Engine                                        | Status         | Fingerprint                                                             | Discussion                                                    | Documentation
 --------------------------------------------- | -------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------
